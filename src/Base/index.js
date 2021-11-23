@@ -13,7 +13,14 @@ const Input = ({
   ...props
 }) => {
   const [focused, setFocused] = React.useState(false);
-
+  const textStyles = {
+    ...(props.textStyles || {
+      flex: 1,
+      width: '100%',
+      color: props.textColor || '#fff',
+      letterSpacing: 0,
+    }),
+  };
   const getFlexDirection = () => {
     if (icon && iconPosition) {
       if (iconPosition === 'left') {
@@ -40,20 +47,22 @@ const Input = ({
 
       <View
         style={{
-          height: 42,
-          borderWidth: 1,
-          borderRadius: 4,
-          paddingHorizontal: 5,
-          marginTop: 5,
-          alignItems: icon ? 'center' : 'baseline',
-          borderColor: getBorderColor(),
-          flexDirection: getFlexDirection(),
+          ...(props.textInputStyles || {
+            height: 42,
+            borderWidth: 1,
+            borderRadius: 4,
+            paddingHorizontal: 5,
+            marginTop: 5,
+            alignItems: icon ? 'center' : 'baseline',
+            borderColor: getBorderColor(),
+            flexDirection: getFlexDirection(),
+          }),
         }}>
         <View>{icon && icon}</View>
 
         <TextInput
           placeholder={placeholder}
-          style={[{flex: 1, width: '100%'}, style]}
+          style={textStyles}
           onChangeText={onChangeText}
           value={value}
           onFocus={() => {
@@ -66,7 +75,14 @@ const Input = ({
         />
       </View>
       {error && (
-        <Text style={{color: '#DC2626', paddingTop: 4, fontSize: 12}}>
+        <Text
+          style={{
+            ...(props.errorTextStyles || {
+              color: '#DC2626',
+              paddingTop: 4,
+              fontSize: 12,
+            }),
+          }}>
           {error}
         </Text>
       )}
