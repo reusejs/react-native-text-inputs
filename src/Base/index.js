@@ -5,7 +5,6 @@ const Input = ({
   onChangeText,
   iconPosition,
   icon,
-  style,
   value,
   placeholder = 'Enter Text',
   label = null,
@@ -33,18 +32,19 @@ const Input = ({
 
   const getBorderColor = () => {
     if (error) {
-      return '#DC2626';
+      return props.borderColor || '#DC2626';
     }
 
     if (focused) {
-      return '#E4E4E7';
+      return props.focusColor || '#52525B';
     }
   };
 
   return (
-    <View style={{paddingVertical: 12}}>
-      {label && <Text>{label}</Text>}
-
+    <>
+      <View style={{...props.labelStyles}}>
+        {label && <Text>{label}</Text>}
+      </View>
       <View
         style={{
           ...(props.wrapperStyles || {
@@ -59,7 +59,6 @@ const Input = ({
           }),
         }}>
         <View>{icon && icon}</View>
-
         <TextInput
           placeholder={placeholder}
           style={textInputStyles}
@@ -74,19 +73,21 @@ const Input = ({
           {...props}
         />
       </View>
-      {error && (
-        <Text
-          style={{
-            ...(props.errorTextStyles || {
-              color: '#DC2626',
-              paddingTop: 4,
-              fontSize: 12,
-            }),
-          }}>
-          {error}
-        </Text>
-      )}
-    </View>
+      <View>
+        {error && (
+          <Text
+            style={{
+              ...(props.errorTextStyles || {
+                color: '#DC2626',
+                paddingTop: 4,
+                fontSize: 12,
+              }),
+            }}>
+            {error}
+          </Text>
+        )}
+      </View>
+    </>
   );
 };
 

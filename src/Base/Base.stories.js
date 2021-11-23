@@ -11,8 +11,6 @@ import {
   Alert,
   onChangeText,
 } from 'react-native';
-// // eslint-disable-next-line react-hooks/rules-of-hooks
-// const [value, onChangeText] = React.useState();
 
 storiesOf('Default', module)
   .addDecorator(getStory => (
@@ -32,6 +30,7 @@ storiesOf('Default', module)
       // value={value}
       icon={<Text>😂</Text>}
       iconPosition="right"
+      // focusColor="#22D3EE"
     />
   ))
   .add('Default Required Field', () => (
@@ -42,5 +41,7 @@ storiesOf('Default', module)
       icon={<Text>😊</Text>}
       iconPosition="left"
       error={'This field is required'}
+      // borderColor="#FDBA74"
+      // errorTextStyles={{color: '#FDBA74'}}
     />
   ));
