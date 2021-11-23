@@ -13,8 +13,8 @@ const Input = ({
   ...props
 }) => {
   const [focused, setFocused] = React.useState(false);
-  const textStyles = {
-    ...(props.textStyles || {
+  const textInputStyles = {
+    ...(props.textInputStyles || {
       flex: 1,
       width: '100%',
       color: props.textColor || '#fff',
@@ -47,7 +47,7 @@ const Input = ({
 
       <View
         style={{
-          ...(props.textInputStyles || {
+          ...(props.wrapperStyles || {
             height: 42,
             borderWidth: 1,
             borderRadius: 4,
@@ -62,7 +62,7 @@ const Input = ({
 
         <TextInput
           placeholder={placeholder}
-          style={textStyles}
+          style={textInputStyles}
           onChangeText={onChangeText}
           value={value}
           onFocus={() => {
