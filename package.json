@@ -1,6 +1,6 @@
 {
   "name": "@reusejs/react-native-buttons",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A library which works as a base to build react components and push to npm",
   "main": "build/index.js",
   "files": [
