@@ -28,8 +28,8 @@ storiesOf('Default', module)
       label="Username"
       onChangeText={text => onChangeText(text)}
       // value={value}
-      icon={<Text>😂</Text>}
-      iconPosition="right"
+      // icon={<Text>+91</Text>}
+      // iconPosition="left"
       // focusColor="#22D3EE"
     />
   ))
