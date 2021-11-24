@@ -1,78 +1,94 @@
 import React from 'react';
-import {ActivityIndicator, Text, View, Pressable} from 'react-native';
+import {Text, View, TextInput} from 'react-native';
 
-const Button = ({
-  disabled = false,
-  onPress,
-  busy = false,
-  loaderIcon = <ActivityIndicator color="#fff" />,
-  busyText = 'Processing..',
+const Input = ({
+  onChangeText,
+  iconPosition,
+  icon,
+  value,
+  placeholder = 'Enter Text',
+  label = null,
+  error,
   ...props
 }) => {
-  const textStyles = {
-    ...(props.textStyles || {
-      fontWeight: 'bold',
+  const [focused, setFocused] = React.useState(false);
+  const textInputStyles = {
+    ...(props.textInputStyles || {
+      flex: 1,
+      width: '100%',
       color: props.textColor || '#fff',
       letterSpacing: 0,
     }),
   };
+  const getFlexDirection = () => {
+    if (icon && iconPosition) {
+      if (iconPosition === 'left') {
+        return 'row';
+      } else if (iconPosition === 'right') {
+        return 'row-reverse';
+      }
+    }
+  };
+
+  const getBorderColor = () => {
+    if (error) {
+      return props.borderColor || '#DC2626';
+    }
+
+    if (focused) {
+      return props.focusColor || '#52525B';
+    }
+  };
 
   return (
-    <Pressable
-      disabledd={disabled}
-      onPress={() => {
-        if (!disabled) {
-          onPress();
-        }
-      }}
-      style={({pressed}) => [
-        {
-          backgroundColor: pressed
-            ? props.onPressColor || '#27272A'
-            : props.backgroundColor || '#18181B',
-          width: '100%',
-          borderColor: props.borderColor || '#27272A',
-          borderWidth: 1,
-          borderRadius: 4,
-          paddingVertical: 8,
-          paddingHorizontal: 4,
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
-      ]}>
-      {busy === false && (
-        <View>
-          {typeof props.children === 'string' ? (
-            <Text style={textStyles}>{props.children}</Text>
-          ) : (
-            props.children
-          )}
-        </View>
-      )}
-
-      {busy === true && (
-        <View
-          style={{
-            ...(props.loaderIconWrapperStyles || {
-              alignItems: 'center',
-              flexDirection: 'row',
-              justifyContent: 'center',
-            }),
-          }}>
-          <View
+    <>
+      <View style={{...props.labelStyles}}>
+        {label && <Text>{label}</Text>}
+      </View>
+      <View
+        style={{
+          ...(props.wrapperStyles || {
+            height: 42,
+            borderWidth: 1,
+            borderRadius: 4,
+            paddingHorizontal: 5,
+            marginTop: 5,
+            alignItems: icon ? 'center' : 'baseline',
+            borderColor: getBorderColor(),
+            flexDirection: getFlexDirection(),
+          }),
+        }}>
+        <View>{icon && icon}</View>
+        <TextInput
+          placeholder={placeholder}
+          style={textInputStyles}
+          onChangeText={onChangeText}
+          value={value}
+          onFocus={() => {
+            setFocused(true);
+          }}
+          onBlur={() => {
+            setFocused(false);
+          }}
+          {...props}
+        />
+      </View>
+      <View>
+        {error && (
+          <Text
             style={{
-              ...(props.loaderStyles || {
-                marginRight: 20,
+              ...(props.errorTextStyles || {
+                color: '#DC2626',
+                paddingTop: 4,
+                fontSize: 12,
               }),
             }}>
-            {loaderIcon}
-          </View>
-
-          <Text style={textStyles}>{busyText}</Text>
-        </View>
-      )}
-    </Pressable>
+            {error}
+          </Text>
+        )}
+      </View>
+    </>
   );
 };
 
-export default Button;
+export default Input;
