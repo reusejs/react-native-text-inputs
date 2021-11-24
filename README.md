@@ -50,11 +50,11 @@ react-native-component-template is freely distributable under the terms of the [
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
 
-[npm-url]: https://npmjs.org/package/@reusejs/react-native-buttons
-[npm-version-image]: https://img.shields.io/npm/v/@reusejs/react-native-buttons.svg?style=flat
+[npm-url]: https://npmjs.org/package/@reusejs/react-native-text-inputs
+[npm-version-image]: https://img.shields.io/npm/v/@reusejs/react-native-text-inputs.svg?style=flat
 
-[npm-downloads-image]: https://img.shields.io/npm/dm/@reusejs/react-native-buttons.svg?style=flat
-[npm-downloads-url]: https://npmcharts.com/compare/@reusejs/react-native-buttons?minimal=true
+[npm-downloads-image]: https://img.shields.io/npm/dm/@reusejs/react-native-text-inputs.svg?style=flat
+[npm-downloads-url]: https://npmcharts.com/compare/@reusejs/react-native-text-inputs?minimal=true
 
 <!-- [view-storybook-image]: https://img.shields.io/badge/View-Storybook-F59E0B.svg
 [view-storybook-url]: https://master--617258d6729860003a3d6e10.chromatic.com -->
@@ -62,8 +62,8 @@ react-native-component-template is freely distributable under the terms of the [
 [join-discord-image]: https://img.shields.io/badge/Join-Discord-7389D8.svg
 [join-discord-url]: https://discord.gg/VUa9SHvvDb
 
-<!-- [storybook-action-image]: https://github.com/reusejs/react-native-buttons/actions/workflows/chromatic.yml/badge.svg
-[storybook-action-url]: https://github.com/reusejs/react-native-buttons/actions/workflows/chromatic.yml -->
+<!-- [storybook-action-image]: https://github.com/reusejs/react-native-text-inputs/actions/workflows/chromatic.yml/badge.svg
+[storybook-action-url]: https://github.com/reusejs/react-native-text-inputs/actions/workflows/chromatic.yml -->
 
-[npm-publish-action-image]: https://github.com/reusejs/react-native-buttons/actions/workflows/publish.yml/badge.svg
-[npm-publish-action-url]: https://github.com/reusejs/react-native-buttons/actions/workflows/publish.yml
+[npm-publish-action-image]: https://github.com/reusejs/react-native-text-inputs/actions/workflows/publish.yml/badge.svg
+[npm-publish-action-url]: https://github.com/reusejs/react-native-text-inputs/actions/workflows/publish.yml
