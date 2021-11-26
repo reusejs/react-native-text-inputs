@@ -1,3 +1,4 @@
+import {height} from 'dom-helpers';
 import React from 'react';
 import {Text, View, TextInput} from 'react-native';
 
@@ -36,42 +37,58 @@ const Input = ({
     }
 
     if (focused) {
-      return props.focusColor || '#52525B';
+      return props.focusColor || props.borderColor || '#52525B';
     }
+    return props.borderColor;
   };
 
   return (
     <>
       <View style={{...props.labelStyles}}>
-        {label && <Text>{label}</Text>}
+        {label && (
+          <Text style={{color: props.labelTextColor || '#000'}}>{label}</Text>
+        )}
       </View>
       <View
         style={{
           ...(props.wrapperStyles || {
-            height: 42,
-            borderWidth: 1,
-            borderRadius: 4,
-            paddingHorizontal: 5,
-            marginTop: 5,
-            alignItems: icon ? 'center' : 'baseline',
+            height: props.height || 42,
+            borderWidth: props.borderWidth || 1,
+            borderRadius: props.borderRadius || 4,
+            paddingHorizontal: props.paddingHorizontal || 5,
+            marginTop: props.marginTop || 5,
+            alignItems: 'icon' ? 'center' : 'baseline',
             borderColor: getBorderColor(),
-            flexDirection: getFlexDirection(),
+            flexDirection: getFlexDirection() || 'row',
           }),
         }}>
-        <View>{icon && icon}</View>
-        <TextInput
-          placeholder={placeholder}
-          style={textInputStyles}
-          onChangeText={onChangeText}
-          value={value}
-          onFocus={() => {
-            setFocused(true);
-          }}
-          onBlur={() => {
-            setFocused(false);
-          }}
-          {...props}
-        />
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+          }}>
+          {icon && icon}
+        </View>
+        <View
+          style={{
+            flex: 8,
+            height: props.height || 42,
+          }}>
+          <TextInput
+            placeholder={placeholder}
+            style={textInputStyles}
+            color={props.color || '#000'}
+            onChangeText={onChangeText}
+            value={value}
+            onFocus={() => {
+              setFocused(true);
+            }}
+            onBlur={() => {
+              setFocused(false);
+            }}
+            {...props}
+          />
+        </View>
       </View>
       <View>
         {error && (
