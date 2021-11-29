@@ -34,10 +34,8 @@ const Input = ({
   const getBorderColor = () => {
     if (error) {
       return props.borderColor || '#DC2626';
-    }
-
-    if (focused) {
-      return props.focusColor || props.borderColor || '#52525B';
+    } else if (focused) {
+      return props.focusBorderColor || props.borderColor;
     }
     return props.borderColor;
   };
@@ -57,21 +55,19 @@ const Input = ({
             borderRadius: props.borderRadius || 4,
             paddingHorizontal: props.paddingHorizontal || 5,
             marginTop: props.marginTop || 5,
-            alignItems: 'icon' ? 'center' : 'baseline',
+            alignItems: 'center',
             borderColor: getBorderColor(),
             flexDirection: getFlexDirection() || 'row',
           }),
         }}>
         <View
           style={{
-            flex: 1,
             alignItems: 'center',
           }}>
           {icon && icon}
         </View>
         <View
           style={{
-            flex: 8,
             height: props.height || 42,
           }}>
           <TextInput

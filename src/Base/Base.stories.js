@@ -29,11 +29,11 @@ storiesOf('Default', module)
       onChangeText={text => onChangeText(text)}
       labelTextColor="#3B82F6"
       // value={value}
-      icon={<Text>+91</Text>}
+      // icon={<Text>+91</Text>}
       borderColor="#3B82F6"
       // color="#3B82F6"
       // iconPosition="left"
-      // focusColor="#22D3EE"
+      // focusBorderColor="#22D3EE"
     />
   ))
   .add('Default Required Field', () => (
