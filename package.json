@@ -1,6 +1,6 @@
 {
   "name": "@reusejs/react-native-text-inputs",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A library which works as a base to build react components and push to npm",
   "main": "build/src/index.js",
   "files": [
