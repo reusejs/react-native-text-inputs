@@ -67,5 +67,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "dependencies": {
+    "@react-native-community/datetimepicker": "^5.0.1"
   }
 }
