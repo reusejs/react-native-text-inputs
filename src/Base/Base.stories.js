@@ -47,4 +47,22 @@ storiesOf('Default', module)
       // borderColor="#FDBA74"
       // errorTextStyles={{color: '#FDBA74'}}
     />
+  ))
+  .add('Default Calendar Field', () => (
+    <Input
+      calendar="true"
+      mode="date"
+      label="Select Date"
+      value={''}
+      onChangeText={value => {
+        onChangeText(value)
+      }}
+      labelTextColor="#3B82F6"
+      maximumDate={new Date(2300, 10, 20)}
+      minimumDate={new Date(1950, 0, 1)}
+      placeholder="YYYY-MM-DD"
+      icon={<Text>😊</Text>}
+      iconPosition="right"
+      edit={false}
+    />
   ));
